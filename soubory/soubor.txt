@@ -1,0 +1,6 @@
+Dnes se podíváme na to, jak v Pythonu číst z (a pak i zapisovat do) souborů.
+K tomu jsou potřeba tři kroky:
+soubor otevřít,
+něco z něj přečíst
+a pak jej zase zavřít.
+Vytvoř si soubor basnicka.txt napiš do něj libovolnou básničku, a ulož jej s kódováním UTF-8.
