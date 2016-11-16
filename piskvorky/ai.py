@@ -1,5 +1,5 @@
 from random import randint, choice
-from util import tah
+
 
 def tah_pocitace(pole, symbol):
     """Vrátí herní pole se zaznamenaným tahem počítače."""
@@ -17,7 +17,7 @@ def tah_pocitace(pole, symbol):
     elif symbol=="o":
         opacny_symbol="x"
     else:
-        raise ValueError(print("Spatny symbol"))
+        raise ValueError()
 
     #nejdrive zkusi, jestli uz protihrac hral
     # prochazi pole od 0. pozice a hleda prvni pozici-index opacneho symbolu
@@ -43,20 +43,27 @@ def tah_pocitace(pole, symbol):
         #opacneho symbolu
         indexy = [i for i, x in enumerate(pole) if x == opacny_symbol]
 
-        #do promenne "o" se ulozi nahodne cislo, tedy pozice z promenne "indexy", je tam tedy pozice nahodneho
-        #opacneho symbolu
-        o=choice(indexy)
-
-        #promenna "pozice" se nastavi na pozici opacneho symbolu a pak k ni pricte nebo odecte jednicku, takze
-        #se nastavina vedlejsi policko
-        pozice=o+choice(cislo)
+        
 
         #vyzkousi se jestli je pozice vubec mozna a neni mensi nebo vetsi nez pole nebo jestli neni policko obsazene
         while pozice < 0 or pozice >= len(pole) or pole[pozice] != '-':
-            #dokud nebude pozice vyhovovat, bude se k ni nahodne pricitat nebo odecitat 1
-            pozice=pozice+choice(cislo)
+            
+            #do promenne "o" se ulozi nahodne cislo, tedy pozice z promenne "indexy", je tam tedy pozice nahodneho
+            #opacneho symbolu
+            o=choice(indexy)
+
+            #promenna "pozice" se nastavi na pozici opacneho symbolu a pak k ni pricte nebo odecte jednicku, takze
+            #se nastavina vedlejsi policko
+            pozice=o+choice(cislo)
+                
 
 
 
 
     return tah(pole, pozice, symbol)
+
+def tah(pole, index, symbol):  # Ukazka DRY principu, vytahli jsme spolecny kod do jedne funkce
+    """Vrátí herní pole s daným symbolem umístěným na danou pozici."""
+    if pole[index]!="-":
+        raise ValueError("hrajes na obsazene pole")
+    return pole[:index] + symbol + pole[index + 1:]
