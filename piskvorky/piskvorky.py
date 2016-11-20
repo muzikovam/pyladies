@@ -1,6 +1,6 @@
 from random import randint
-from ai import tah_pocitace
-from util import tah
+from ai import tah_pocitace, tah
+
 
 def vyhodnot(pole):
     if 'xxx' in pole:
