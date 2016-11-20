@@ -9,7 +9,7 @@ def tah_pocitace(pole, symbol):
 
     #pokud je pole plne, vrati vyjimku
     if '-' not in pole:
-        raise ValueError(print("Pole uz je plne."))
+        raise ValueError()
 
     #uklada do promenne opacny_symbol symbol protihrace, ktery ma hledat
     if symbol=="x":
@@ -55,9 +55,21 @@ def tah_pocitace(pole, symbol):
             #promenna "pozice" se nastavi na pozici opacneho symbolu a pak k ni pricte nebo odecte jednicku, takze
             #se nastavina vedlejsi policko
             pozice=o+choice(cislo)
+
+            #jelikoz se ale muze stat, ze neni nikde okolo opacneho symbolu jiz volne misto, musi se to osetrit
+
+            if pozice < 0 or pozice >= len(pole) or pole[pozice] != '-':
                 
+                #pokud tedy pozice stale neni vhodna, muzeme se nejdrive kouknout, kolik volnych policek nam zbyva
+                volno = [i for i, x in enumerate(pole) if x == "-"]
 
+                #pokud je volne policko jen jedno, priradime pozici prave sem
+                if len(volno)==1:
+                    pozice=volno[0]
 
+                #pokud ne, k aktualni pozici, ktera se sklada z pozice opacneho szmolu +-1, priradime nebo odecteme 1 znovu
+                else:
+                    pozice=pozice+choice(cislo)
 
 
     return tah(pole, pozice, symbol)
