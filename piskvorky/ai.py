@@ -59,7 +59,7 @@ def tah_pocitace(pole, symbol):
             #jelikoz se ale muze stat, ze neni nikde okolo opacneho symbolu jiz volne misto, musi se to osetrit
 
             if pozice < 0 or pozice >= len(pole) or pole[pozice] != '-':
-                
+
                 #pokud tedy pozice stale neni vhodna, muzeme se nejdrive kouknout, kolik volnych policek nam zbyva
                 volno = [i for i, x in enumerate(pole) if x == "-"]
 
@@ -79,3 +79,5 @@ def tah(pole, index, symbol):  # Ukazka DRY principu, vytahli jsme spolecny kod 
     if pole[index]!="-":
         raise ValueError("hrajes na obsazene pole")
     return pole[:index] + symbol + pole[index + 1:]
+
+
