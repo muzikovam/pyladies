@@ -9,7 +9,7 @@ Substring nesmi obsahovat cislo a musi obsahovat minimalne jedno velke pismeno.
 Tato funkce byla soucasti prijimaciho pohovoru do spolecnosti Seznam.cz
 """
 def solution(S):
-   
+
 
     hold=-2
     indexy = [i for i, x in enumerate(S) if x.isdigit()]
