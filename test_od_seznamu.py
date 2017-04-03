@@ -8,46 +8,13 @@ Cilem je nalezt nejdelsi substringy v retezci predanem funkci.
 Substring nesmi obsahovat cislo a musi obsahovat minimalne jedno velke pismeno.
 Tato funkce byla soucasti prijimaciho pohovoru do spolecnosti Seznam.cz
 """
+import re
 def solution(S):
 
-
+    retezce = re.split("\d+", S)
     hold=-2
-    indexy = [i for i, x in enumerate(S) if x.isdigit()]
-    if len(indexy)==1:
-        y = S[:indexy[0]]
-        pocitadlo = zkouska(y)
-        if pocitadlo > hold:
-            hold = pocitadlo
-        y = S[indexy[0]+1:]
-        pocitadlo = zkouska(y)
-        if pocitadlo > hold:
-            hold = pocitadlo
-    elif len(indexy) == 2:
-        y = S[:indexy[0]]
-        pocitadlo = zkouska(y)
-        if pocitadlo > hold:
-            hold = pocitadlo
-        y = S[indexy[0] + 1:indexy[1]]
-        pocitadlo = zkouska(y)
-        if pocitadlo > hold:
-            hold = pocitadlo
-        y = S[indexy[1] + 1:]
-        pocitadlo = zkouska(y)
-        if pocitadlo > hold:
-            hold = pocitadlo
-
-    else:
-        y = S[:indexy[0]]
-        pocitadlo = zkouska(y)
-        if pocitadlo > hold:
-            hold = pocitadlo
-        for i in range(len(indexy)-2):
-            y = S[indexy[i+1] + 1:indexy[i+2]]
-            pocitadlo = zkouska(y)
-            if pocitadlo > hold:
-                hold = pocitadlo
-        y = S[indexy[-1] + 1:]
-        pocitadlo = zkouska(y)
+    for r in retezce:
+        pocitadlo = zkouska(r)
         if pocitadlo > hold:
             hold = pocitadlo
 
