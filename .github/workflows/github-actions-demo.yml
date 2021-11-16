@@ -1,5 +1,13 @@
 name: GitHub Actions Demo 
-on: [push]
+on: 
+  workflow_dispatch:
+    inputs: 
+      test-scope:
+        description: 'Test Scope: (specify test file path); comma separated if multiple'
+        required: true
+      test-server:
+        description: 'Test Server: (choose from RACF, ACF2 or TSS); comma separated if multiple'
+        required: true
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
